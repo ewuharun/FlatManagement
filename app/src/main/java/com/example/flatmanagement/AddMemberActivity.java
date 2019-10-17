@@ -63,14 +63,14 @@ public class AddMemberActivity extends AppCompatActivity {
             valid=false;
         }else{
             nameEt.setError(null);
-            valid=true;
+
         }
         if(phone.equals("") || phone.length()>11 || phone.length()<11){
             phoneEt.setError("use valid phone");
             valid=false;
         }else{
             phoneEt.setError(null);
-            valid=true;
+
         }
 
         if(permanent_address.equals("")){
@@ -78,7 +78,7 @@ public class AddMemberActivity extends AppCompatActivity {
             valid=false;
         }
         else{
-            valid=true;
+            permanent_addressEt.setError("permanent addres is required");
         }
         return valid;
     }

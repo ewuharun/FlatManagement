@@ -70,13 +70,14 @@ public class AddFlatActivity extends AppCompatActivity {
         cursor.moveToFirst();
         int TotalRent = cursor.getInt(cursor.getColumnIndex("T"));
         total.setText(String.valueOf(TotalRent));
+
         Intent intent=new Intent(AddFlatActivity.this,AddMemberActivity.class);
         startActivity(intent);
     }
 
     private boolean validate() {
-        Flat_no=flat_no.getText().toString().trim();
-        House_no=house_no.getText().toString().trim();
+        Flat_no=flat_no.getText().toString();
+        House_no=house_no.getText().toString();
         Gas_bill=gas_bill.getText().toString().trim();
         Flat_fee=flat_fee.getText().toString().trim();
         Electric_bill=electric_bill.getText().toString().trim();
@@ -85,19 +86,19 @@ public class AddFlatActivity extends AppCompatActivity {
         boolean valid;
         valid=true;
 
-        if(Flat_no.equals("") || !Flat_no.matches("[a-zA-Z0-9/.? ]*")){
+        if(TextUtils.isEmpty(Flat_no) || !Flat_no.matches("[a-zA-Z0-9/.? ]*")){
             flat_no.setError("use [a-z] or [A-Z] or number for defining your flat no");
             valid=false;
         }else{
             flat_no.setError(null);
-            valid=true;
+
         }
-        if(House_no.equals("") || !House_no.matches("[a-zA-Z0-9/.? ]*")){
+        if(TextUtils.isEmpty(House_no) || !House_no.matches("[a-zA-Z0-9/.? ]*")){
             house_no.setError("use [a-z] or [A-Z] or number for defining your flat no");
             valid=false;
         }else{
             house_no.setError(null);
-            valid=true;
+
         }
         if(Gas_bill.equals("")){
             gas_bill.setError("gas bill error");
@@ -105,7 +106,7 @@ public class AddFlatActivity extends AppCompatActivity {
             valid=false;
         }else{
             gas_bill.setError(null);
-            valid=true;
+
         }
         if(Electric_bill.equals("")){
             electric_bill.setError("electric bill error");
@@ -113,7 +114,7 @@ public class AddFlatActivity extends AppCompatActivity {
             valid=false;
         }else{
             electric_bill.setError(null);
-            valid=true;
+
         }
         if(Flat_fee.equals("")){
             flat_fee.setError("Rent bill error");
@@ -121,7 +122,7 @@ public class AddFlatActivity extends AppCompatActivity {
             valid=false;
         }else{
             flat_fee.setError(null);
-            valid=true;
+
         }
         if(Washmen_bill.equals("")){
             washmen_bill.setError("gas bill error");
@@ -129,7 +130,7 @@ public class AddFlatActivity extends AppCompatActivity {
             valid=false;
         }else{
             washmen_bill.setError(null);
-            valid=true;
+
         }
         if(Others.equals("")){
             others.setError("gas bill error");
@@ -137,7 +138,7 @@ public class AddFlatActivity extends AppCompatActivity {
             valid=false;
         }else{
             others.setError(null);
-            valid=true;
+
         }
 
         return valid;
