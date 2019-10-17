@@ -2,18 +2,21 @@ package com.example.flatmanagement;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class AssignActivity extends AppCompatActivity {
     private EditText dateEt,advanceEt;
-    private Spinner sflat_id,shouse_id,smember_id;
+    public Spinner sflat_id,shouse_id,smember_id;
     private String fid,hid,mid;
     private Dbhelper dbhelper;
+    private String Flat_name,House_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,12 +25,18 @@ public class AssignActivity extends AppCompatActivity {
         init();
 
         dbhelper=new Dbhelper(this);
+        Intent intent=getIntent();
+        Flat_name=intent.getStringExtra("Flat_name");
+        House_name=intent.getStringExtra("House_name");
+
+        Toast.makeText(this, ""+Flat_name+"  "+House_name, Toast.LENGTH_SHORT).show();
+        dateEt.setText(Flat_name);
+
+
         getDataForSpinner();
 
 
-        addItemOnFlatIdSpinner(fid);
-        addItemOnHouseIdSpinner(hid);
-        addItemOnMemberIdSpinner(mid);
+
 
 
     }

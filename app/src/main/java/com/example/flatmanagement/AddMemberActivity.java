@@ -3,6 +3,7 @@ package com.example.flatmanagement;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -43,10 +44,18 @@ public class AddMemberActivity extends AppCompatActivity {
         });
     }
     private void addMemeberToTheDatabase() {
-        member=new Member(name,phone,email,permanent_address);
+        boolean check = dbhelper.isMemberExist(name,phone);
 
-        long id=dbhelper.addMemberInfo(member);
-        Toast.makeText(AddMemberActivity.this,"MEMBER ADDED  "+id, Toast.LENGTH_SHORT).show();
+        if(check==true){
+            Toast.makeText(AddMemberActivity.this, "Member is already Exist", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            member=new Member(name,phone,email,permanent_address);
+
+            long id=dbhelper.addMemberInfo(member);
+            Toast.makeText(AddMemberActivity.this,"MEMBER ADDED  "+id, Toast.LENGTH_SHORT).show();
+
+        }
 
     }
 
@@ -78,13 +87,10 @@ public class AddMemberActivity extends AppCompatActivity {
             valid=false;
         }
         else{
-            permanent_addressEt.setError("permanent addres is required");
+            permanent_addressEt.setError(null);
         }
         return valid;
     }
-
-
-
 
     private void init() {
         nameEt=findViewById(R.id.member_name);

@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -63,21 +64,33 @@ public class AddFlatActivity extends AppCompatActivity {
 
     private void addingFlatInfoToTheDatabase() {
         //for adding the data
-        flatInfo=new FlatInfo(Flat_no,House_no,Integer.valueOf(Flat_fee),Integer.valueOf(Gas_bill),Integer.valueOf(Electric_bill),Integer.valueOf(Washmen_bill),Integer.valueOf(Others));
-        dbhelper.addFlatInfo(flatInfo);
 
-        Cursor cursor= dbhelper.TotalRent(Flat_no,House_no);
-        cursor.moveToFirst();
-        int TotalRent = cursor.getInt(cursor.getColumnIndex("T"));
-        total.setText(String.valueOf(TotalRent));
+        boolean check = dbhelper.isFlatExist(Flat_no,House_no);
 
-        Intent intent=new Intent(AddFlatActivity.this,AddMemberActivity.class);
-        startActivity(intent);
+        if(check==true){
+            Toast.makeText(AddFlatActivity.this, "Data is already exist", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            flatInfo=new FlatInfo(Flat_no,House_no,Integer.valueOf(Flat_fee),Integer.valueOf(Gas_bill),Integer.valueOf(Electric_bill),Integer.valueOf(Washmen_bill),Integer.valueOf(Others));
+            dbhelper.addFlatInfo(flatInfo);
+
+            Cursor cursor= dbhelper.TotalRent(Flat_no,House_no);
+            cursor.moveToFirst();
+            int TotalRent = cursor.getInt(cursor.getColumnIndex("T"));
+            total.setText(String.valueOf(TotalRent));
+
+            Intent intent=new Intent(AddFlatActivity.this,AddMemberActivity.class);
+            startActivity(intent);
+        }
+
+
+
+
     }
 
     private boolean validate() {
-        Flat_no=flat_no.getText().toString();
-        House_no=house_no.getText().toString();
+        Flat_no=flat_no.getText().toString().trim();
+        House_no=house_no.getText().toString().trim();
         Gas_bill=gas_bill.getText().toString().trim();
         Flat_fee=flat_fee.getText().toString().trim();
         Electric_bill=electric_bill.getText().toString().trim();

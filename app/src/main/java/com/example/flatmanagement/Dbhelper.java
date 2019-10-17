@@ -102,6 +102,31 @@ public class Dbhelper extends SQLiteOpenHelper {
         return id;
     }
 
+    public boolean isFlatExist(String flat_no,String house_no) {
+        SQLiteDatabase db =  getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT * FROM FLAT_INFO WHERE flat_no=? AND house_no=?", new String[] { flat_no, house_no });
+        if(cursor.getCount() <= 0){
+            cursor.close();
+            return false;
+        }
+        cursor.close();
+        return true;
+    }
+    public boolean isMemberExist(String member_name,String member_phone) {
+        SQLiteDatabase db =  getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT * FROM MEMBER_INFO WHERE name=? AND phone=?", new String[] { member_name, member_phone });
+
+        if(cursor.getCount() <= 0){
+            cursor.close();
+            return false;
+        }
+        cursor.close();
+        return true;
+    }
+
+
     public Cursor TotalRent(String FlatNO,String HouseNo){
         SQLiteDatabase db = this.getReadableDatabase();
 
