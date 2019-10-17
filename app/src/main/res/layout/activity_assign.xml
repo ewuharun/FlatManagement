@@ -4,42 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:layout_gravity="center"
-    android:gravity="center"
     android:layout_height="match_parent"
-    tools:context=".AddMemberActivity">
+    tools:context=".AssignActivity">
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/flat_id">
+
+    </Spinner>
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/house_id">
+
+    </Spinner>
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/member_id">
+
+    </Spinner>
 
     <EditText
         android:layout_width="match_parent"
-        android:hint="Name"
-        android:inputType="text"
-        android:id="@+id/member_name"
+        android:hint="Date"
+        android:id="@+id/dateEt"
         android:layout_marginTop="5dp"
+        android:inputType="date"
+        android:drawableRight="@drawable/ic_date_range_black_24dp"
         android:layout_height="wrap_content">
     </EditText>
     <EditText
         android:layout_width="match_parent"
-        android:hint="Phone"
-        android:id="@+id/member_phone"
-        android:maxLength="11"
+        android:hint="Advance"
+        android:id="@+id/advanceEt"
         android:layout_marginTop="5dp"
-        android:inputType="phone"
-        android:layout_height="wrap_content">
-    </EditText>
-    <EditText
-        android:layout_width="match_parent"
-        android:hint="Email"
-        android:id="@+id/member_email"
-        android:layout_marginTop="5dp"
-        android:inputType="textEmailAddress"
-        android:layout_height="wrap_content">
-    </EditText>
-    <EditText
-        android:layout_width="match_parent"
-        android:hint="Parmament address"
-        android:id="@+id/member_permanent_address"
-        android:layout_marginTop="5dp"
-        android:inputType="text"
+        android:inputType="number"
         android:layout_height="wrap_content">
     </EditText>
 
@@ -47,11 +47,13 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btn1_submit"
+        android:id="@+id/assign_btn"
         android:layout_marginTop="40dp"
-        android:text="Submit">
+        android:text="Assign">
 
     </Button>
+
+
 
 
 </LinearLayout>

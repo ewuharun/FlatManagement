@@ -57,7 +57,7 @@
             android:layout_width="match_parent"
             android:id="@+id/flat_fee"
             android:inputType="number"
-            android:text="0"
+            android:maxLength="6"
             android:layout_height="wrap_content"/>
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -79,7 +79,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:inputType="number"
-                android:text="0"
+                android:maxLength="6"
                 android:id="@+id/gas_bill"
                 android:layout_height="wrap_content"/>
 
@@ -96,7 +96,7 @@
                 android:layout_width="match_parent"
                 android:id="@+id/electric_bill"
                 android:inputType="number"
-                android:text="0"
+                android:maxLength="6"
                 android:layout_height="wrap_content"/>
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -113,8 +113,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:id="@+id/washman_bill"
-            android:text="0"
             android:inputType="number"
+            android:maxLength="6"
             android:layout_height="wrap_content"/>
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -133,7 +133,7 @@
             android:layout_width="match_parent"
             android:id="@+id/others"
             android:inputType="number"
-            android:text="0"
+            android:maxLength="6"
             android:layout_height="wrap_content"/>
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -159,6 +159,14 @@
         android:layout_marginTop="40dp"
         android:textStyle="bold"
         android:text="Add">
+
+    </Button>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Assign Flat"
+        android:id="@+id/assignEt">
 
     </Button>
 
