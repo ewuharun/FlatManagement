@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/update_house"
+        android:title="Update">
+
+    </item>
+
+    <item
+        android:id="@+id/delete_house"
+        android:title="Delete">
+
+    </item>
+    <item
+        android:id="@+id/find_member"
+        android:title="Find Member">
+
+    </item>
+
+</menu>

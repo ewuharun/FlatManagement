@@ -1,4 +1,4 @@
-package com.example.flatmanagement;
+package com.example.flatmanagement.Model;
 
 public class FlatInfo {
     private String flat_no;

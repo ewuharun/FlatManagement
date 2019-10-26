@@ -1,4 +1,4 @@
-package com.example.flatmanagement;
+package com.example.flatmanagement.Model;
 
 public class Member {
     private String name,phone,email,permanent_address;

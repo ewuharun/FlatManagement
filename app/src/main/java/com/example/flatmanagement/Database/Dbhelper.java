@@ -1,20 +1,20 @@
-package com.example.flatmanagement;
+package com.example.flatmanagement.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
-import androidx.annotation.Nullable;
+import com.example.flatmanagement.Model.FlatInfo;
+import com.example.flatmanagement.Model.House;
+import com.example.flatmanagement.Model.Member;
 
 public class Dbhelper extends SQLiteOpenHelper {
     private Context context;
 
-    public static final int DATABASE_VERSION = 5;
-    public static final String DATABASE_NAME = "FlatManagement";
+    public static final int DATABASE_VERSION = 1;
+    public static final String DATABASE_NAME = "E-Home";
     public static final String TABLE_FLAT = "FLAT_INFO";
     public static final String KEY_ID = "id";
     public static final String KEY_FLAT_NO = "flat_no";
@@ -31,6 +31,14 @@ public class Dbhelper extends SQLiteOpenHelper {
     public static final String KEY_MEMBER_PHONE = "phone";
     public static final String KEY_MEMBER_EMAIL = "email";
     public static final String KEY_MEMBER_PERMANENT_ADDRESS = "permanent_address";
+
+
+    public static final String HOUSE_TABLE = "HOUSE_INFO";
+    public static final String KEY_HOUSE_ID = "id";
+    public static final String KEY_HOUSE_NAME = "houseName";
+    public static final String KEY_TOTAL_FLAT = "totalFlat";
+    public static final String KEY_MANAGER_NAME = "managerName";
+    public static final String KEY_MANAGER_CONTACT = "managerContact";
 
 
 
@@ -51,14 +59,15 @@ public class Dbhelper extends SQLiteOpenHelper {
                 +KEY_SERVICE + " INTEGER" + ")";
 
 
-        String CREATE_MEMBER_INFO_TABLE = " CREATE TABLE " + MEMBER_TABLE + "("
-                + KEY_MEMBER_ID + " INTEGER PRIMARY KEY,"
-                +KEY_MEMBER_NAME + " TEXT,"
-                +KEY_MEMBER_PHONE + " TEXT,"
-                +KEY_MEMBER_EMAIL + " TEXT,"
-                +KEY_MEMBER_PERMANENT_ADDRESS + " TEXT" + ")";
+        String CREATE_HOUSE_INFO_TABLE = " CREATE TABLE " + HOUSE_TABLE + "("
+                + KEY_HOUSE_ID + " INTEGER PRIMARY KEY,"
+                +KEY_HOUSE_NAME + " TEXT,"
+                +KEY_TOTAL_FLAT + " TEXT,"
+                +KEY_MANAGER_NAME + " TEXT,"
+                +KEY_MANAGER_CONTACT + " TEXT" + ")";
 
-        db.execSQL(CREATE_MEMBER_INFO_TABLE);
+
+        db.execSQL(CREATE_HOUSE_INFO_TABLE);
         db.execSQL(CREATE_FLAT_INFO_TABLE);
 
 
@@ -85,6 +94,36 @@ public class Dbhelper extends SQLiteOpenHelper {
         db.insert(TABLE_FLAT, null, values);
         db.close(); // Closing database connection
     }
+
+
+    // Adding new Flat info
+    public void addHouseInfo(House houseInfo) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_HOUSE_NAME,houseInfo.getHouseName());
+        values.put(KEY_TOTAL_FLAT,houseInfo.getTotalFlat());
+        values.put(KEY_MANAGER_NAME,houseInfo.getManagerName());
+        values.put(KEY_MANAGER_CONTACT,houseInfo.getManagerContact());
+
+
+        // Inserting Row
+        db.insert(HOUSE_TABLE, null, values);
+        db.close(); // Closing database connection
+    }
+
+    public Cursor getHouseInfo(){
+        //get all data form database
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM "+HOUSE_TABLE,null);
+        return cursor;
+
+    }
+    public boolean deleteHouse(String houseName){
+        SQLiteDatabase db=this.getWritableDatabase();
+        return db.delete(HOUSE_TABLE, KEY_HOUSE_NAME + " =? ", new String[]{houseName}) > 0;
+    }
+
+
 
     long addMemberInfo(Member member) {
         SQLiteDatabase db = this.getWritableDatabase();

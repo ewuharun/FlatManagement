@@ -1,4 +1,4 @@
-package com.example.flatmanagement;
+package com.example.flatmanagement.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.example.flatmanagement.Database.Dbhelper;
+import com.example.flatmanagement.R;
 
 import java.util.ArrayList;
 

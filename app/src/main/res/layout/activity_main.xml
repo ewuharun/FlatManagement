@@ -3,172 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
-    tools:context=".AddFlatActivity">
+    android:layout_height="match_parent"
+    tools:context=".Activity.MainActivity">
 
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content">
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight=".5"
-            android:layout_margin="10dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:hint="Flat No/Name">
+        android:id="@+id/frameLayout"
+        android:layout_weight="1"
+        android:layout_height="match_parent">
+    </FrameLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:inputType="text"
-                android:id="@+id/flat_no"
-                android:layout_height="wrap_content"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight=".5"
-            android:layout_margin="10dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:hint="House No/Name">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:inputType="text"
-                android:id="@+id/house_no"
-                android:layout_height="wrap_content"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-    </LinearLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="Rent amount">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:id="@+id/flat_fee"
-            android:inputType="number"
-            android:maxLength="6"
-            android:layout_height="wrap_content"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content">
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight=".5"
-            android:layout_margin="10dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:hint="Gas Bill">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:inputType="number"
-                android:maxLength="6"
-                android:id="@+id/gas_bill"
-                android:layout_height="wrap_content"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight=".5"
-            android:layout_margin="10dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:hint="Electric Bill">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:id="@+id/electric_bill"
-                android:inputType="number"
-                android:maxLength="6"
-                android:layout_height="wrap_content"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-    </LinearLayout>
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="WashMan Bill">
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:id="@+id/washman_bill"
-            android:inputType="number"
-            android:maxLength="6"
-            android:layout_height="wrap_content"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="Others">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:id="@+id/others"
-            android:inputType="number"
-            android:maxLength="6"
-            android:layout_height="wrap_content"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_marginTop="20dp"
-        android:text="Total"
-        android:textSize="28sp"
-        android:textColor="#000000"
-        android:textStyle="bold"
-        android:id="@+id/total"
-        android:gravity="center"
+        android:id="@+id/bottomNavigation"
+        app:menu="@menu/menu_item"
+        android:layout_below="@id/frameLayout"
+        android:layout_alignParentBottom="true"
         android:layout_height="wrap_content">
 
-    </TextView>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_submit"
-        android:layout_margin="10dp"
-        android:layout_marginTop="40dp"
-        android:textStyle="bold"
-        android:text="Add">
-
-    </Button>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Assign Flat"
-        android:id="@+id/assignEt">
-
-    </Button>
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 
 
